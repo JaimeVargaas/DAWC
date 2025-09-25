@@ -12,3 +12,18 @@ header {
     height: 20%;
     background-color: blue;
 }
+
+button {
+    margin: 1%;
+    padding: 1%;
+    color: white;
+    font-weight: bold;
+    background-color: darkgray;
+    border-radius: 10px;
+}
+
+input {
+    height: 4%;
+    margin: 1%;
+    
+}
