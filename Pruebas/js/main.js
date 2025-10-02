@@ -398,16 +398,16 @@ h11.innerHTML = result; */
 }
  */
 // Parametro Spread
-let myArray = [true, 5, 7, 9];
+// let myArray = [true, 5, 7, 9];
 
-// Funciones anonimas
-b2.onclick = function() {
-    document.getElementById("it1").value = parseFloat(itop1.value)*parseFloat(itop2.value)
-};
+// // Funciones anonimas
+// b2.onclick = function() {
+//     document.getElementById("it1").value = parseFloat(itop1.value)*parseFloat(itop2.value)
+// };
 
-document.body.onload = ()  => {
-    alert("Empezando...")
-}
+// document.body.onload = ()  => {
+//     alert("Empezando...")
+// }
 
 /**
  * @returns Devuelve la media de las notas si el primer parámetro 
@@ -459,6 +459,7 @@ document.body.onload = ()  => {
 //     }
 // }
 
-for (i in myArray)
-    h11.innerHTML += myArray[i];
+// for (i in myArray)
+//     h11.innerHTML += myArray[i];
+
 
