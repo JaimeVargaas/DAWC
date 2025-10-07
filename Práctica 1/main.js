@@ -25,7 +25,21 @@ document.getElementById("añadir").onclick = function () {
 }
 
 // Ejercicio 2
+document.getElementById("and").onclick = function () {
+    let bin1 = document.getElementById("bin1").value;
+    let bin2 = document.getElementById("bin2").value;
+    let resXOR = document.getElementById("resXOR");
 
+    if ((bin1 == "0" || bin1 == "1") && (bin2 == "0" || bin2 == "1")) {
+        if ((bin1 == "0" && bin2 == "0") || (bin1 == "1" && bin2 == "1")) {
+            resXOR.innerText = "0";
+        } else {
+            resXOR.innerText = "1";
+        }
+    } else {
+        resXOR.innerText = "Pon 1 o 0";
+    }
+}
 
 // Ejercicio 3
 document.getElementById("convert").onclick = function () {
@@ -97,11 +111,11 @@ document.getElementById("calNota").onclick = function () {
 
     if (nota < 5) {
         resNota.innerHTML += "SUSPENSO";
-    } else if (nota >= 5 && nota < 7) {
+    } else if (nota < 7) {
         resNota.innerHTML += "APROBADO";
-    } else if (nota >= 7 && nota < 8.5) {
+    } else if (nota < 8.5) {
         resNota.innerHTML += "NOTABLE";
-    } else if (nota >= 8.5 && nota <= 10) {
+    } else if (nota <= 10) {
         resNota.innerHTML += "SOBRESALIENTE";
     } else {
         resNota.innerHTML += "Nota inválida";
@@ -121,4 +135,12 @@ document.getElementById("calNota").onclick = function () {
     //         resNota.innerHTML += "SOBRESALIENTE";
     //         break;
     // }
+}
+
+document.getElementById("genPiramide1").onclick = () => {
+    let genP = document.getElementById("genP");
+    for(let i=1;i<=50;i++) {
+        genP.innerText = i;
+    }
+         
 }
