@@ -139,8 +139,108 @@ document.getElementById("calNota").onclick = function () {
 
 document.getElementById("genPiramide1").onclick = () => {
     let genP = document.getElementById("genP");
-    for(let i=1;i<=50;i++) {
-        genP.innerText = i;
+    for (let i = 1; i <= 50; i++) {
+        for (let j = 0; j < i; j++) {
+            genP.innerText += i;
+        }
+        genP.innerText += "\n";
     }
-         
 }
+
+document.getElementById("genPiramide2").onclick = () => {
+    let genP = document.getElementById("genP2");
+    genP.innerText = "";
+    for (let i = 1; i <= 50; i++) {
+        for (let j = 1; j <= i; j++) {
+            genP.innerText += j;
+        }
+        genP.innerText += "\n";
+    }
+}
+
+document.getElementById("calEntero").onclick = () => {
+    let num = document.getElementById("valorEntero").value;
+    let resEntero = document.getElementById("resEntero");
+
+    if (num % 2 == 0)
+        resEntero.innerText = "Par";
+    else
+        resEntero.innerText = "Impar";
+
+}
+
+
+function* juegoPUM() {
+    let resPUM = document.getElementById("resPUM");
+    resPUM.innerText = "";
+    let array = [];
+
+    for (let i = 1; i <= 100; i++) {
+        // dividimos el numero por digito
+        array = i.toString().split('')
+
+        if (array[array.length - 1 == 7] || i % 7 == 0) {
+            yield resPUM.innerText += " PUM + \n";
+        }
+        else
+            yield resPUM.innerText += " " + i;
+    }
+}
+
+document.getElementById("calPUM").onclick = () => {
+    const gen = juegoPUM();
+    let next = gen.next();
+    while (!next.done) {
+        next = gen.next();
+    }
+};
+
+document.getElementById("calConteo").onclick = () => {
+    let resConteo = document.getElementById("resConteo");
+    resConteo.innerText = "";
+
+    for (let i = 1; i <= 300; i++) {
+        resConteo.style.fontSize = "16px";
+        resConteo.style.color = "black";
+
+        let span = document.createElement("span");
+        span.innerHTML = i + " ";
+
+        if (i % 4 === 0) {
+            span.style.fontSize = "20px";
+            span.style.color = "green";
+        }
+        else if (i % 9 === 0) {
+            span.style.fontSize = "22px";
+            span.style.color = "red";
+        }
+
+        resConteo.appendChild(span);
+    }
+}
+
+document.getElementById("dados").onclick = () => {
+    let dado1 = document.getElementById("dado1");
+    let array = [];
+
+    dado1.innerText = "";
+
+    // se inicializa a dos porque la suma minima de los dos dados es 2
+    // se inicializa el array primero para que luego solo se tenga que sumar el valor a la clave
+    for (let i = 2; i <= 12; i++) {
+        array[i] = 0;
+    }
+
+    for (let i = 0; i < 36000; i++) {
+        let d1 = Math.floor(Math.random() * 6) + 1;
+        let d2 = Math.floor(Math.random() * 6) + 1;
+        let suma = d1 + d2;
+
+        array[suma] += 1;
+    }
+
+    array.forEach((valor, clave) => {
+        dado1.innerText += "Suma " + clave + ": " + valor + " veces\n";
+    });
+};
+
