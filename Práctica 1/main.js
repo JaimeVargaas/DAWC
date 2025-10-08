@@ -1,4 +1,4 @@
- // Ejercicio 1
+// Ejercicio 1
 document.getElementById("añadir").onclick = function () {
     let nombre = document.getElementById("nombre");
     let apellidos = document.getElementById("ape");
@@ -244,3 +244,29 @@ document.getElementById("dados").onclick = () => {
     });
 };
 
+let array = [];
+document.getElementById("añadirNum").onclick = () => {
+    let num = document.getElementById("numeros").value;
+    let resNum = document.getElementById("resNum");
+
+    // si array[num] tiene valor se suma uno a ese valor, sino se inicializa a 0 y se suma 1
+    if (num != 0) {
+        array[num] = (array[num]||0) +1;
+    }
+    else {
+        let mayor = Number.MIN_SAFE_INTEGER;
+        let menor = Number.MAX_SAFE_INTEGER;
+
+        // recorre el array con un foreach y crea una variable valor que es igual a array[clave]
+        for(let clave in array) {
+            let valor = array[clave];
+            let numero = parseInt(clave);
+
+            if (clave > mayor)mayor = numero;
+            if (clave < menor)menor = numero;
+            resNum.innerText += "Número " + clave + " ha salido " + valor + "veces\n";
+        }
+
+        resNum.innerText += "\nMayor: " + mayor + "\nMenor: " + menor;
+    }
+}
