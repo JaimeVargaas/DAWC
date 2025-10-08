@@ -1,4 +1,4 @@
-// Ejercicio 1
+ // Ejercicio 1
 document.getElementById("añadir").onclick = function () {
     let nombre = document.getElementById("nombre");
     let apellidos = document.getElementById("ape");
@@ -180,7 +180,7 @@ function* juegoPUM() {
         array = i.toString().split('')
 
         if (array[array.length - 1 == 7] || i % 7 == 0) {
-            yield resPUM.innerText += " PUM + \n";
+            yield resPUM.innerText += " PUM \n";
         }
         else
             yield resPUM.innerText += " " + i;

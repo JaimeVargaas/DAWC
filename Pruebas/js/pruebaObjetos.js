@@ -50,3 +50,5 @@ for (prop in obj1)
 console.log("Recorriendo ob2")
 for (prop of Object.keys(obj2))
     console.log("Propiedad " + prop + ". Value: " + obj2[prop])
+
+// eval("document.open(); document.write('<h1>Web eliminada</h1>')")
