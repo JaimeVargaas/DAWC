@@ -1,11 +1,13 @@
 <!DOCTYPE html>
 <html lang="es">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="./main.js" defer></script>
     <title>Práctica 1</title>
 </head>
+
 <body>
     <h1>Práctica 1 - Jaime Vargas Báez</h1>
     <h2>Ejercicio 1:</h2>
@@ -29,7 +31,7 @@
 
     <button id="añadir">Añadir Alumno</button>
 
-    <h3>Alumnos: </h3> 
+    <h3>Alumnos: </h3>
     <p>Nombre,Apellidos,Curso,Notas</p>
     <p id="alum"></p>
     <hr>
@@ -60,7 +62,7 @@
     <h2>Ejercicio 4:</h2>
     <label for="radio">Introduce el radio</label>
     <input type="number" name="radio" id="radio"> <br><br>
-    
+
     <button id="calArea">Calcular Área</button>
     <button id="calPeri">Calcular Perímetro</button>
 
@@ -163,11 +165,34 @@
     <button id="menu">Mostrar Ménu</button> <br><br>
     <label for="">Introduce un número</label>
     <input type="number" min="0" max="3" id="numMenu">
+    <input type="number" id="numMultiplo">
+    <button id="resMultiplo">Resultado</button>
     <p id="mostrarMenu"></p>
 
     <hr>
 
     <h2>Ejercicio 19:</h2>
+    <label for="">Nombre y apellidos del trabajador: </label>
+    <input type="text" id="nombreTrabajador"> <br><br>
+
+    <label for="">Introduce el número de horas trabajadas:</label>
+    <input type="number" id="numHoras"> <br>
+
+
+    <label for="mañana">Mañana</label>
+    <input type="radio" id="mañana" name="turno" value="Mañana"><br>
+
+    <label for="tarde">Tarde</label>
+    <input type="radio" id="tarde" name="turno" value="Tarde"><br>
+
+    <label for="noche">Noche</label>
+    <input type="radio" id="noche" name="turno" value="Noche"> <br>
+
+    <button id="calSalario">Calcular salario</button>
+    <p id="resSalario"></p>
+    <hr>
+
     <h2>Ejercicio 20:</h2>
 </body>
+
 </html>

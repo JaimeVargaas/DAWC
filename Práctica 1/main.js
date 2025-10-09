@@ -38,7 +38,7 @@ document.getElementById("and").onclick = function () {
         }
     } else {
         resXOR.innerText = "Pon 1 o 0";
-    }
+}
 }
 
 // Ejercicio 3
@@ -251,21 +251,21 @@ document.getElementById("añadirNum").onclick = () => {
 
     // si array[num] tiene valor se suma uno a ese valor, sino se inicializa a 0 y se suma 1
     if (num != 0) {
-        array[num] = (array[num]||0) +1;
+        array[num] = (array[num] || 0) + 1;
     }
     else {
         let mayor = Number.MIN_SAFE_INTEGER;
         let menor = Number.MAX_SAFE_INTEGER;
 
-        array.sort((a,b)=>b-a);
+        array.sort((a, b) => b - a);
 
         // recorre el array con un foreach y crea una variable valor que es igual a array[clave]
-        for(let clave in array) {
+        for (let clave in array) {
             let valor = array[clave];
             let numero = parseInt(clave);
 
-            if (clave > mayor)mayor = numero;
-            if (clave < menor && numero!=0)menor = numero;
+            if (clave > mayor) mayor = numero;
+            if (clave < menor && numero != 0) menor = numero;
             resNum.innerText += "Número " + clave + " ha salido " + valor + "veces\n";
         }
 
@@ -283,15 +283,15 @@ document.getElementById("guardarInv").onclick = () => {
 
 document.getElementById("mostrarInv").onclick = () => {
     let mostrarInv = document.getElementById("resInv");
-    mostrarInv.innerHTML="";
+    mostrarInv.innerHTML = "";
 
     invertir.reverse();
 
-    for(let i in invertir) {
-        if(i==invertir.length-1)
-            mostrarInv.innerHTML+=invertir[i];
+    for (let i in invertir) {
+        if (i == invertir.length - 1)
+            mostrarInv.innerHTML += invertir[i];
         else
-            mostrarInv.innerHTML+=invertir[i] + " - ";
+            mostrarInv.innerHTML += invertir[i] + " - ";
     }
 
     // for(let i = invertir.length-1; i>=0;i--) {
@@ -309,9 +309,9 @@ document.getElementById("genPasswd").onclick = () => {
     let conjunto = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyzáéíóúÁÉÍÓÚ0123456789!@#$%^&*()";
     let num = conjunto.length;
     let contraseña = "";
-    for(let i=0;i<=bytes;i++) {
-        let char = conjunto.charAt(Math.random()*num+1);
-        contraseña +=  char;
+    for (let i = 0; i <= bytes; i++) {
+        let char = conjunto.charAt(Math.random() * num + 1);
+        contraseña += char;
     }
     resPasswd.innerText = contraseña;
 }
@@ -321,64 +321,132 @@ document.getElementById("mostrarEnteros").onclick = () => {
     let entero2 = document.getElementById("valorEntero2").value;
     let resEnteros = document.getElementById("resEnteros");
 
-    resEnteros.innerText="";
+    resEnteros.innerText = "";
 
-    let menor = Math.min(entero1,entero2);
-    let mayor = Math.max(entero1,entero2);
+    let menor = Math.min(entero1, entero2);
+    let mayor = Math.max(entero1, entero2);
 
-    resEnteros.innerText += "\n Menor: " + menor + "\n Diferencia: " + (mayor-menor) + "\n";
+    resEnteros.innerText += "\n Menor: " + menor + "\n Diferencia: " + (mayor - menor) + "\n";
 
-    while(menor<=mayor) {
+    while (menor <= mayor) {
         resEnteros.innerText += menor + ",";
         menor++;
     }
 }
- let mostrarMenu = document.getElementById("mostrarMenu");
+let mostrarMenu = document.getElementById("mostrarMenu");
 document.getElementById("menu").onclick = () => {
     mostrarMenu.innerText = "Menú\n----\n1. Calcular si es múltiplo de 2.\n2. Calcular si es múltiplo de 3.\n3. Calcular si es múltiplo de 5.\n0. Salir";
 }
 
-document.getElementById("numMenu").addEventListener("input",  function() {
+document.getElementById("resMultiplo").onclick = () => {
+    let numMenu = document.getElementById("numMenu").value;
+    let numMultiplo = document.getElementById("numMultiplo").value;
+
     let aux;
-    mostrarMenu.innerText = "";
-    if(this.value==1) {
-        aux=multiplo2(this.value);
-        mostrarMenu.innerText+= (aux==true? "\nSi es multiplo de 2" : "No es multiplo de 2");
-    }
-    if(this.value==2) {
-        aux=multiplo3(this.value);
-        mostrarMenu.innerText+= (aux==true? "\nSi es multiplo de 3" : "No es multiplo de 3");
-    }
-    if(this.value==3) {
-        aux=multiplo5(this.value);
-        mostrarMenu.innerText+= (aux==true? "\nSi es multiplo de " : "No es multiplo de 5");
-    }
-    if(this.value==0)
-        mostrarMenu.innerText="";
 
-    
+    if (numMenu == 1) {
+        aux = multiplo2(numMultiplo);
+        mostrarMenu.innerText = (aux == true ? "Si es multiplo de 2" : "No es multiplo de 2");
+    }
+    else if (numMenu == 2) {
+        aux = multiplo3(numMultiplo);
+        mostrarMenu.innerText = (aux == true ? "Si es multiplo de 3" : "No es multiplo de 3");
+    }
+    else if (numMenu == 3) {
+        aux = multiplo5(numMultiplo);
+        mostrarMenu.innerText = (aux == true ? "Si es multiplo de 5" : "No es multiplo de 5");
+    }
+    else
+        mostrarMenu.innerText = "";
 
-});
+}
 
 function multiplo2(num) {
-    if (num%2==0)
+    if (num % 2 == 0)
         return true;
-    else 
+    else
         return false;
 }
 
 function multiplo3(num) {
-    if (num%3==0)
+    if (num % 3 == 0)
         return true;
-    else 
+    else
         return false;
 }
 
 function multiplo5(num) {
-    if (num%5==0)
+    if (num % 5 == 0)
         return true;
-    else 
+    else
         return false;
 }
+
+// creamos array antes de la funcion para que se guarde por pagina y no cada vez que le demos al boton se reinicie
+let salarios = [];
+let ContSalariosBrutos = null;
+
+document.getElementById("calSalario").onclick = () => {
+    let resSalario = document.getElementById("resSalario");
+    // cada vez que le damos al boton se pone en blanco para que no se concatene con lo de antes
+    resSalario.innerText ="";
+
+    let horas = document.getElementById("numHoras").value;
+    let nombre = document.getElementById("nombreTrabajador").value;
+
+    // la variable radio contiene dentro un array con todos los input que tengan nombre turno
+    let radio = document.getElementsByName("turno");
+    let turno = null;
+
+    // recorremos el array radio buscando el que hemos seleccionado, y una vez lo hemos encontrado, metemos su valor en la variable turno
+    for (let i = 0; i <= radio.length - 1; i++) {
+        if (radio[i].checked)
+            turno = radio[i].value;
+    }
+
+    let euroHora = null;
+
+    if (turno == "Mañana") euroHora = 25;
+    if (turno == "Tarde") euroHora = 30;
+    if (turno == "Noche") euroHora = 35;
+
+    let salarioBruto = euroHora * horas;
+    ContSalariosBrutos += salarioBruto;
+
+    let salarioNeto = null;
+
+    // calculamos el porcentaje de cada salario para calcular el neto
+    if (salarioBruto < 600) salarioNeto = salarioBruto - ((salarioBruto * 8) / 100);
+    else if (salarioBruto < 1000) salarioNeto = salarioBruto - ((salarioBruto * 10) / 100);
+    else salarioNeto = salarioBruto - ((salarioBruto * 12) / 100);
+
+    // añadimos el trabajador al array general
+    salarios.push({ 
+        Nombre: nombre, 
+        Horas: horas, 
+        Turno: turno, 
+        SalarioBruto: 
+        salarioBruto, 
+        SalarioNeto: salarioNeto
+    });
+
+    // recorremos el array general de salarios para imprimirlo en la pantalla, creamos una variable trabajador para guardar el trabajador seleccionado para luego imprimirlo por sus atributos 
+    for (let i = 0; i < salarios.length; i++) {
+        let trabajador= salarios[i];
+        if (i == 0) {
+            resSalario.innerText += "Nombre:" +  trabajador.Nombre + " - Horas trabajadas: " + trabajador.Horas + " - Turno: " 
+            + trabajador.Turno + " - Salario Bruto: " + trabajador.SalarioBruto + " - Salario Neto: " + trabajador.SalarioNeto;
+        }
+        else {
+            resSalario.innerText += "\nNombre:" +  trabajador.Nombre + " - Horas trabajadas: " + trabajador.Horas + " - Turno: " 
+            + trabajador.Turno + " - Salario Bruto: " + trabajador.SalarioBruto + " - Salario Neto: " + trabajador.SalarioNeto;
+        }
+    }
+
+    // imprimimos el gasto de salarios brutos
+    resSalario.innerHTML += "<br><br><strong>Salarios brutos abonados: </strong>" + ContSalariosBrutos;
+}
+
+
 
 
