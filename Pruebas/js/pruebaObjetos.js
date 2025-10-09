@@ -52,3 +52,43 @@ for (prop of Object.keys(obj2))
     console.log("Propiedad " + prop + ". Value: " + obj2[prop])
 
 // eval("document.open(); document.write('<h1>Web eliminada</h1>')")
+
+let array2 = ["hola", 1, "adios", {nombre:"PEPE",edad:2, mail:"pepe@mail.es"}];
+// para eliminiar el ultimo objeto de un array
+array2.pop();
+
+// para añadir algo en mitad del array
+array2.splice(3,0,false,99999,"Pepe");
+info.innerText="";
+for(let i in array2)  {
+    if (i==0)
+        info.innerText += array2[i];
+    else
+        info.innerText += " - "+ array2[i]  ;
+}
+
+/*
+ Números sean negativos
+ true a false y viceversa
+ Los string se le anteponga "Nombre: "
+ */
+
+ // la funcion map lleva dentro un bucle por lo tanto no hace falta crearlo dentro
+let myArrayResult = array2.map(function (elem) {
+    switch(typeof elem) {
+        case "number":
+            return (elem * -1);
+            break;
+        case "boolean":
+            return !elem;
+            break;
+        case "string":
+            return "Nombre: " + elem;
+            break;
+    }
+});
+
+info.innerHTML = myArrayResult;
+
+
+

@@ -257,16 +257,87 @@ document.getElementById("añadirNum").onclick = () => {
         let mayor = Number.MIN_SAFE_INTEGER;
         let menor = Number.MAX_SAFE_INTEGER;
 
+        array.sort((a,b)=>b-a);
+
         // recorre el array con un foreach y crea una variable valor que es igual a array[clave]
         for(let clave in array) {
             let valor = array[clave];
             let numero = parseInt(clave);
 
             if (clave > mayor)mayor = numero;
-            if (clave < menor)menor = numero;
+            if (clave < menor && numero!=0)menor = numero;
             resNum.innerText += "Número " + clave + " ha salido " + valor + "veces\n";
         }
 
         resNum.innerText += "\nMayor: " + mayor + "\nMenor: " + menor;
     }
 }
+
+let invertir = [];
+document.getElementById("guardarInv").onclick = () => {
+    let carInvertir = document.getElementById("carInvertir");
+    invertir.push(carInvertir.value);
+
+    carInvertir.innerText = "";
+}
+
+document.getElementById("mostrarInv").onclick = () => {
+    let mostrarInv = document.getElementById("resInv");
+    mostrarInv.innerHTML="";
+
+    invertir.reverse();
+
+    for(let i in invertir) {
+        if(i==invertir.length-1)
+            mostrarInv.innerHTML+=invertir[i];
+        else
+            mostrarInv.innerHTML+=invertir[i] + " - ";
+    }
+
+    // for(let i = invertir.length-1; i>=0;i--) {
+    //     if(i==0)
+    //         mostrarInv.innerHTML+=invertir[i];
+    //     else
+    //         mostrarInv.innerHTML+=invertir[i] + " - ";
+    // }
+}
+
+document.getElementById("genPasswd").onclick = () => {
+    let bytes = document.getElementById("intrBytes").value;
+    let resPasswd = document.getElementById("resPasswd");
+
+    let conjunto = "ABCDEFGHIJKLMNÑOPQRSTUVWXYZabcdefghijklmnñopqrstuvwxyzáéíóúÁÉÍÓÚ0123456789!@#$%^&*()";
+    let num = conjunto.length;
+    let contraseña = "";
+    for(let i=0;i<=bytes;i++) {
+        let char = conjunto.charAt(Math.random()*num+1);
+        contraseña +=  char;
+    }
+    resPasswd.innerText = contraseña;
+}
+
+document.getElementById("mostrarEnteros").onclick = () => {
+    let entero1 = document.getElementById("valorEntero1").value;
+    let entero2 = document.getElementById("valorEntero2").value;
+    let resEnteros = document.getElementById("resEnteros");
+
+    resEnteros.innerText="";
+
+    let menor = Math.min(entero1,entero2);
+    let mayor = Math.max(entero1,entero2);
+
+    resEnteros.innerText += "\n Menor: " + menor + "\n Diferencia: " + (mayor-menor) + "\n";
+
+    while(menor<=mayor) {
+        resEnteros.innerText += menor + ",";
+        menor++;
+    }
+}
+
+document.getElementById("menu").onclick = () => {
+    let mostrarMenu = document.getElementById("mostrarMenu");
+
+    mostrarMenu.innerText = "Menú\n----\n1. Calcular si es múltiplo de 2.\n2. Calcular si es múltiplo de 3.\n3. Calcular si es múltiplo de 5.\n0. Salir";
+}
+
+
