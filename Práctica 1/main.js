@@ -333,11 +333,52 @@ document.getElementById("mostrarEnteros").onclick = () => {
         menor++;
     }
 }
-
+ let mostrarMenu = document.getElementById("mostrarMenu");
 document.getElementById("menu").onclick = () => {
-    let mostrarMenu = document.getElementById("mostrarMenu");
-
     mostrarMenu.innerText = "Menú\n----\n1. Calcular si es múltiplo de 2.\n2. Calcular si es múltiplo de 3.\n3. Calcular si es múltiplo de 5.\n0. Salir";
+}
+
+document.getElementById("numMenu").addEventListener("input",  function() {
+    let aux;
+    mostrarMenu.innerText = "";
+    if(this.value==1) {
+        aux=multiplo2(this.value);
+        mostrarMenu.innerText+= (aux==true? "\nSi es multiplo de 2" : "No es multiplo de 2");
+    }
+    if(this.value==2) {
+        aux=multiplo3(this.value);
+        mostrarMenu.innerText+= (aux==true? "\nSi es multiplo de 3" : "No es multiplo de 3");
+    }
+    if(this.value==3) {
+        aux=multiplo5(this.value);
+        mostrarMenu.innerText+= (aux==true? "\nSi es multiplo de " : "No es multiplo de 5");
+    }
+    if(this.value==0)
+        mostrarMenu.innerText="";
+
+    
+
+});
+
+function multiplo2(num) {
+    if (num%2==0)
+        return true;
+    else 
+        return false;
+}
+
+function multiplo3(num) {
+    if (num%3==0)
+        return true;
+    else 
+        return false;
+}
+
+function multiplo5(num) {
+    if (num%5==0)
+        return true;
+    else 
+        return false;
 }
 
 
