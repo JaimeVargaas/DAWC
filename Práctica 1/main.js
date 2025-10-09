@@ -448,5 +448,23 @@ document.getElementById("calSalario").onclick = () => {
 }
 
 
+let numeroRandom = parseInt(Math.random()*100+1);
+let contIntentos = 0;
+document.getElementById("ejInt").onclick = () => {
+    let intento = document.getElementById("intento").value;
+    let resIntento = document.getElementById("resIntento");
+
+    if(intento>numeroRandom) {
+         resIntento.innerText= "Mi número es menor";
+         contIntentos++;
+    }
+    else if(intento<numeroRandom) {
+         resIntento.innerText ="Mi número es mayor";
+         contIntentos++;
+    }
+    else resIntento.innerText="Felicidades! has acertado el número, has necesitado " + contIntentos + " intentos"; 
+
+}
+
 
 
