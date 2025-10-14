@@ -52,11 +52,22 @@ asignar(profesor1);
 // ----------------------------------------
 // EJERCICIO 2
 // ----------------------------------------
+    
+
+// ----------------------------------------
+// EJERCICIO 3
+// ----------------------------------------
+
+let num = new Number(Math.PI);
+let numPI1 = document.getElementById("numPI1");  
+let numPI2 = document.getElementById("numPI2");
+numPI1.innerText += num.toPrecision(5);
+numPI2.innerText += num.toFixed(4);
 
 
 
 // ----------------------------------------
-// EJERCICIO 
+// EJERCICIO 4 y 5
 // ----------------------------------------
 document.getElementById("calDias").onclick = () => {
     let fecNac = new Date(document.getElementById("fecNac").value);
@@ -64,8 +75,31 @@ document.getElementById("calDias").onclick = () => {
 
     let dateNow = new Date();
 
-    resfecNac.innerText = (dateNow - fecNac)/1000/60/60/24/365 + " años vivo";
-    
+    resfecNac.innerText += (dateNow - fecNac)/1000/60/60/24/365 + " años vivo\n";
+    resfecNac.innerText += (dateNow - fecNac)/1000 + " segundos vivo\n";
+    resfecNac.innerText += (dateNow - fecNac)/1000/60+ " minutos vivo\n";
+    resfecNac.innerText += (dateNow - fecNac)/1000/60/60+ " horas vivo\n";
+    resfecNac.innerText += (dateNow - fecNac)/1000/60/60/24+ " días vivo\n";
+}
+
+// ----------------------------------------
+// EJERCICIO 6
+// ----------------------------------------
+let calendario=[];
+document.getElementById("masEvento").onclick = () => {
+    let tituloEvento = document.getElementById("tituloEvento").value;
+    let diaHora = new Date(document.getElementById("diaHora").value);
+    let diaLegible = diaHora.toLocaleDateString();
+    let resEvento = document.getElementById("resEvento");
+
+    calendario.push({tituloEvento,diaLegible});
+
+    for(let i=0;i<calendario.length;i++) {
+        for(let clave in calendario[i]) {
+            resEvento.innerText += calendario[i][clave] + ", ";
+        }
+        resEvento.innerText += "\n";
+    }
 }
 
 
