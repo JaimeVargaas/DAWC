@@ -106,24 +106,35 @@
 
 
 // script que si son mas de las 8 de la tarde, que ponga en colores oscuros la web
-let info = document.getElementById("info");
-let main = document.getElementById("main");
-let footer = document.getElementById("footer");
-let aside = document.getElementById("aside");
+// let info = document.getElementById("info");
+// let main = document.getElementById("main");
+// let footer = document.getElementById("footer");
+// let aside = document.getElementById("aside");
 
 
-let dateNow = new Date();
-console.log(dateNow.getMonth());
+// let dateNow = new Date();
+// console.log(dateNow.getMonth());
 
-info.innerText = dateNow.toLocaleString();
-if(dateNow.getHours()>=20 || dateNow.getHours()<=7 && dateNow.getMonth()>=9 || dateNow.getMonth()<=2) {
-    info.style.color="White";
-    main.style.backgroundColor = "grey";
-    footer.style.backgroundColor = "black";
-    aside.style.backgroundColor = "darkblue";
+// info.innerText = dateNow.toLocaleString();
+// if(dateNow.getHours()>=20 || dateNow.getHours()<=7 && dateNow.getMonth()>=9 || dateNow.getMonth()<=2) {
+//     info.style.color="White";
+//     main.style.backgroundColor = "grey";
+//     footer.style.backgroundColor = "black";
+//     aside.style.backgroundColor = "darkblue";
+// }
+
+// info.innerHTML = window.innerWidth + " - " + window.innerHeight;
+
+
+// objeto window
+console.log(this)
+
+document.getElementById("cierra").onclick = (e) => {
+    e.preventDefault();
+
+    if (!this.closed)
+        this.close();
 }
-
-info.innerHTML = "¿Estás conectado a Internet?: " + navigator.userAgent; 
 
 
 
