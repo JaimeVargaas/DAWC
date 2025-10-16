@@ -80,6 +80,8 @@ document.getElementById("calDias").onclick = () => {
     resfecNac.innerText += (dateNow - fecNac)/1000/60+ " minutos vivo\n";
     resfecNac.innerText += (dateNow - fecNac)/1000/60/60+ " horas vivo\n";
     resfecNac.innerText += (dateNow - fecNac)/1000/60/60/24+ " días vivo\n";
+
+    if(dateNow.getDay==fecNac.getDate&&dateNow.getMonth==fecNac.getMonth) resfecNac.innerText="FELICIDADES";
 }
 
 // ----------------------------------------
@@ -92,6 +94,7 @@ document.getElementById("masEvento").onclick = () => {
     let diaLegible = diaHora.toLocaleDateString();
     let resEvento = document.getElementById("resEvento");
 
+    resEvento.innerHTML="";
     calendario.push({tituloEvento,diaLegible});
 
     for(let i=0;i<calendario.length;i++) {
@@ -100,6 +103,21 @@ document.getElementById("masEvento").onclick = () => {
         }
         resEvento.innerText += "\n";
     }
+}
+
+
+// ----------------------------------------
+// EJERCICIO 7
+// ----------------------------------------
+document.getElementById("mostrarGuion").onclick = () => {
+    let contGuion = document.getElementById("contGuion").value;
+    let resGuion = document.getElementById("resGuion"); 
+    resGuion.innerText ="";
+
+    // matchall devuelve un array con todos los guiones encontrados, .index sirve para saber en que posicion
+    contGuion.matchAll("-").forEach(element => {
+        resGuion.innerText += "Guión encontrado en la posicón: " + element.index + "\n";
+    });
 }
 
 
