@@ -1,4 +1,4 @@
-// let info = document.getElementById("info");
+let info = document.getElementById("info");
 
 // let obj1 = {
 //     nombre: "Pepe",
@@ -107,9 +107,9 @@
 
 // script que si son mas de las 8 de la tarde, que ponga en colores oscuros la web
 // let info = document.getElementById("info");
-// let main = document.getElementById("main");
-// let footer = document.getElementById("footer");
-// let aside = document.getElementById("aside");
+let main = document.getElementById("main");
+let footer = document.getElementById("footer");
+let aside = document.getElementById("aside");
 
 
 // let dateNow = new Date();
@@ -127,15 +127,47 @@
 
 
 // objeto window
-console.log(this)
+// console.log(self)
 
-document.getElementById("cierra").onclick = (e) => {
-    e.preventDefault();
+// info.innerHTML = "Home es: " + window.home();
 
-    if (!this.closed)
-        this.close();
+// document.getElementById("cierra").onclick = (e) => {
+//     e.preventDefault();
+
+//     if (!this.closed)
+//         this.close();
+// }
+
+
+let backgroundColorMain = "rgb(167, 154, 17)";
+let backgroundColorMain2 = "rgba(232, 52, 7, 1)";
+
+let intervalo = setInterval(function () {
+    if (main.style.backgroundColor == backgroundColorMain)
+        main.style.backgroundColor = backgroundColorMain2;
+    else 
+        main.style.backgroundColor = backgroundColorMain;
+}, 100000000000000);
+
+document.getElementById("cierra").onclick = () => {
+    info.innerHTML = "intervalo parado"
+    clearInterval(intervalo);
 }
 
+// Abrir ventanas
+
+let wAux=undefined;
+document.getElementById("abrir").onclick = () => {
+    wAux= window.open("./src/usuarios.html","_blank","width=330px,height=300px, left=400px,top=100px");
+}
+
+document.getElementById("movera").onclick = () => {
+    if(wAux&&!wAux.closed) {
+        wAux.moveTo(200,200);
+        wAux.focus();
+
+    }
+}
 
 
 
