@@ -169,7 +169,12 @@ document.getElementById("movera").onclick = () => {
     }
 }
 
-
+document.getElementById("aEnviarLogin").onclick = function () {
+    if (!wAux.closed) {
+        wAux.document.getElementById("loginText").value = document.getElementById("login").value;
+        wAux.focus();
+    }
+}
 
 
 
