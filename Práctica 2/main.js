@@ -120,5 +120,60 @@ document.getElementById("mostrarGuion").onclick = () => {
     });
 }
 
+// ----------------------------------------
+// EJERCICIO 8
+// ----------------------------------------
+let array=[];
+let resArray = document.getElementById("resArray");
+document.getElementById("insertUno").onclick = () => {
+    let valor = document.getElementById("insertValor").value;
+    array.unshift(valor);
+}
+
+document.getElementById("insertFinal").onclick = () => {
+    let valor = document.getElementById("insertValor").value;
+    array.push(valor);
+}
+
+document.getElementById("borrarUno").onclick = () => {
+    array.splice(0,1);
+}
+
+document.getElementById("borrarFinal").onclick = () => {
+    array.pop();
+}
+
+document.getElementById("insertPosValue").onclick = () => {
+    let pos = document.getElementById("posArray").value;
+    let valor = document.getElementById("valorArray").value;
+    array[pos]=valor;
+}
+
+document.getElementById("deletePosValue").onclick = () => {
+    let pos = document.getElementById("posArray").value;
+    array.splice(pos,1);
+}
+
+document.getElementById("ordenarAsc").onclick = () => {
+    array.sort();
+}
+
+document.getElementById("ordenarDesc").onclick = () => {
+    array.sort((a,b)=> b.localeCompare(a));
+}
+
+
+document.getElementById("mostrarArray").onclick = () => {
+    resArray.innerText=array.toString();
+}
+
+// ----------------------------------------
+// EJERCICIO 9
+// ----------------------------------------
+document.getElementById("mostrarRes").onclick = () => {
+    respuesta = document.getElementById("resRes");
+
+    
+}
 
 

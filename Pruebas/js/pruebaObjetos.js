@@ -139,43 +139,54 @@ let aside = document.getElementById("aside");
 // }
 
 
-let backgroundColorMain = "rgb(167, 154, 17)";
-let backgroundColorMain2 = "rgba(232, 52, 7, 1)";
+// let backgroundColorMain = "rgb(167, 154, 17)";
+// let backgroundColorMain2 = "rgba(232, 52, 7, 1)";
 
-let intervalo = setInterval(function () {
-    if (main.style.backgroundColor == backgroundColorMain)
-        main.style.backgroundColor = backgroundColorMain2;
-    else 
-        main.style.backgroundColor = backgroundColorMain;
-}, 100000000000000);
+// let intervalo = setInterval(function () {
+//     if (main.style.backgroundColor == backgroundColorMain)
+//         main.style.backgroundColor = backgroundColorMain2;
+//     else 
+//         main.style.backgroundColor = backgroundColorMain;
+// }, 100000000000000);
 
-document.getElementById("cierra").onclick = () => {
-    info.innerHTML = "intervalo parado"
-    clearInterval(intervalo);
+// document.getElementById("cierra").onclick = () => {
+//     info.innerHTML = "intervalo parado"
+//     clearInterval(intervalo);
+// }
+
+// // Abrir ventanas
+
+// let wAux=undefined;
+// document.getElementById("abrir").onclick = () => {
+//     wAux= window.open("./src/usuarios.html","_blank","width=330px,height=300px, left=400px,top=100px");
+// }
+
+// document.getElementById("movera").onclick = () => {
+//     if(wAux&&!wAux.closed) {
+//         wAux.moveTo(200,200);
+//         wAux.focus();
+
+//     }
+// }
+
+// document.getElementById("aEnviarLogin").onclick = function () {
+//     if (!wAux.closed) {
+//         wAux.document.getElementById("loginText").value = document.getElementById("login").value;
+//         wAux.focus();
+//     }
+// }
+
+
+// prueba de cookies
+document.cookie = "name=Pepe";
+
+// salir de pantalla completa, no funciona
+document.getElementById("bSalirFullScreen").onclick = function () {
+    document.exitFullscreen();
 }
 
-// Abrir ventanas
-
-let wAux=undefined;
-document.getElementById("abrir").onclick = () => {
-    wAux= window.open("./src/usuarios.html","_blank","width=330px,height=300px, left=400px,top=100px");
-}
-
-document.getElementById("movera").onclick = () => {
-    if(wAux&&!wAux.closed) {
-        wAux.moveTo(200,200);
-        wAux.focus();
-
-    }
-}
-
-document.getElementById("aEnviarLogin").onclick = function () {
-    if (!wAux.closed) {
-        wAux.document.getElementById("loginText").value = document.getElementById("login").value;
-        wAux.focus();
-    }
-}
-
+// Mostrar el arbol dom del html
+console.log(document.children[0].children);
 
 
 
