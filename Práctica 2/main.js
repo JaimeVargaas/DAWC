@@ -171,9 +171,7 @@ document.getElementById("mostrarArray").onclick = () => {
 // EJERCICIO 9
 // ----------------------------------------
 document.getElementById("mostrarRes").onclick = () => {
-    respuesta = document.getElementById("resRes");
-
-    
+    respuesta = document.getElementById("resRes");    
 }
 
 
