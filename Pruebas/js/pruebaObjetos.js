@@ -178,15 +178,34 @@ let aside = document.getElementById("aside");
 
 
 // prueba de cookies
-document.cookie = "name=Pepe";
+// document.cookie = "name=Pepe";
 
-// salir de pantalla completa, no funciona
-document.getElementById("bSalirFullScreen").onclick = function () {
-    document.exitFullscreen();
-}
+// // salir de pantalla completa, no funciona
+// document.getElementById("bSalirFullScreen").onclick = function () {
+//     document.exitFullscreen();
+// }
 
-// Mostrar el arbol dom del html
-console.log(document.children[0].children);
+// // Mostrar el arbol dom del html
+// console.log(document.children[0].children);
 
+// info.innerHTML = "Número de webs visitadas: " + history.length;
+// info.innerHTML += "<br>¿Cuál es la actual? " + history.current;
 
+// info.innerHTML = "Número de webs visitadas: " + history.length;
+
+// document.getElementById("back").onclick = () => {
+//     history.back()
+// }
+
+// document.getElementById("forward").onclick = () => {
+//     history.forward()
+// }
+
+let text = document.getElementById("texto");
+let er1 = new RegExp("viernes","ig");
+let er2 = /Mancha/ig;
+
+let result = er1.test(text.innerText);
+
+info.innerHTML = result;
 
