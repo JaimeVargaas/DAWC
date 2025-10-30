@@ -170,8 +170,43 @@ document.getElementById("mostrarArray").onclick = () => {
 // ----------------------------------------
 // EJERCICIO 9
 // ----------------------------------------
-document.getElementById("mostrarRes").onclick = () => {
-    respuesta = document.getElementById("resRes");    
+respuesta = document.getElementById("resRes");    
+respuesta.innerText = "Ancho: " + window.innerWidth + ", Alto: " + window.innerHeight;
+
+window.addEventListener("resize", () => {
+    respuesta.innerText = "Ancho: " + window.innerWidth + ", Alto: " + window.innerHeight;
+        if (parseInt(window.innerWidth)<768)
+        respuesta.innerText+= ", Móvil";
+        else if(parseInt(window.innerWidth)<1024)
+            respuesta.innerText+= ", Tablet";
+        else 
+            respuesta.innerText+= ", Desktop"
+});
+
+// ----------------------------------------
+// EJERCICIO 10
+// ----------------------------------------
+let ancho = (window.innerWidth-40);
+let alto = (window.innerHeight-20);
+
+document.getElementById("abrirVentana").onclick = () => {
+    let aux = window.open("./index.html","_blank",`left=${ancho},top=${alto},width=400,height=300`);
 }
 
+// ----------------------------------------
+// EJERCICIO 11
+// ----------------------------------------
+document.getElementById("redimensionar").onclick = () => {
+    aux.resizeTo(600,500);
+}
 
+// ----------------------------------------
+// EJERCICIO 12
+// ----------------------------------------
+document.getElementById("atras").onclick = () => {
+    history.back();
+}
+
+document.getElementById("adelante").onclick = () => {
+    history.forward();
+}
