@@ -258,3 +258,36 @@ document.getElementById("compFecNac").onclick = () => {
     texto.innerText=regFecha.test(input)?"Fecha introducida" : "Introduce fecha";
     
 }
+
+// ----------------------------------------
+// EJERCICIO 16
+// ----------------------------------------
+document.getElementById("compCorreo").onclick = () => {
+    let res = document.getElementById("resCorreo");
+    let input = document.getElementById("correo").value;
+
+    let regCorreo = new RegExp("[0-9A-Za-z\-\.]{2,}@[A-Za-z0-9]{2,}\.[a-z0-9]{2,3}","i")
+
+    res.innerText = regCorreo.test(input)?"Correo introducido":"Inserta correo";
+}
+
+// ----------------------------------------
+// EJERCICIO 17
+// ----------------------------------------
+document.getElementById("ordNombre").onclick = () => {
+    let res = document.getElementById("resNombre");
+    let input = document.getElementById("nombre").value;
+
+    res.innerHTML = input.replace(/([a-zA-Z]+)\s+([a-zA-Z]+)/, "$2, $1");
+}
+
+// ----------------------------------------
+// EJERCICIO 18
+// ----------------------------------------
+document.getElementById("compHTML").onclick = () => {
+    let input = document.getElementById("html").value;
+    let res = document.getElementById("resHTML");
+    let regScript = new RegExp("<script[\\s\\S]*?<\\/script>", "ig");
+
+    res.innerText=input.replace(regScript, "")
+}
