@@ -188,9 +188,9 @@ window.addEventListener("resize", () => {
 // ----------------------------------------
 let ancho = (window.innerWidth-40);
 let alto = (window.innerHeight-20);
-
+let aux= undefined;
 document.getElementById("abrirVentana").onclick = () => {
-    let aux = window.open("./index.html","_blank",`left=${ancho},top=${alto},width=400,height=300`);
+    aux = window.open("../Pruebas/src/usuarios.html","_blank",width=ancho,height=alto)
 }
 
 // ----------------------------------------
@@ -209,4 +209,16 @@ document.getElementById("atras").onclick = () => {
 
 document.getElementById("adelante").onclick = () => {
     history.forward();
+}
+
+// ----------------------------------------
+// EJERCICIO 13
+// ----------------------------------------
+document.getElementById("enviarArea1").onclick = () => {
+if ((aux)&&(!aux.closed)) {
+    aux.document.getElementById("loginText").value = document.getElementById("texto").value;
+    aux.focus();
+  } else {
+
+  }
 }
