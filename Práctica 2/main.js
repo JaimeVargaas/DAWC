@@ -222,3 +222,39 @@ if ((aux)&&(!aux.closed)) {
 
   }
 }
+
+// ----------------------------------------
+// EJERCICIO 14
+// ----------------------------------------
+let er1 = new RegExp("l","ig");
+document.getElementById("compExpr").onclick = () => {
+    let res = document.getElementById("resExp");
+    let texto = document.getElementById("probarExp").value;
+
+    // que ha encontrado y cuantas veces lo ha encontrado en un array
+    let coincidencias = texto.match(er1);
+
+    // true si existe
+    let existe = er1.test(texto);
+
+    // reemplaza el texto encontrado a rojo y negrita
+    let resaltado = texto.replace(er1, match => `<strong style='color:red'><u>${match}</u></strong>`);
+
+    res.innerHTML = `
+        ${existe ? "Existe la letra L" : "No existe la letra L"}<br>
+        Número de coincidencias: ${coincidencias ? coincidencias.length : 0}<br>
+        Texto resaltado: ${resaltado}
+    `;
+}
+
+// ----------------------------------------
+// EJERCICIO 15
+// ----------------------------------------
+document.getElementById("compFecNac").onclick = () => {
+    let regFecha = new RegExp("[0-9]{2}\/[0-9]{2}\/[0-9]{4}","ig")
+    let texto = document.getElementById("resCompFecNac");
+    let input = document.getElementById("fechaNacimiento").value;
+
+    texto.innerText=regFecha.test(input)?"Fecha introducida" : "Introduce fecha";
+    
+}
