@@ -190,14 +190,15 @@ let ancho = (window.innerWidth-40);
 let alto = (window.innerHeight-20);
 let aux= undefined;
 document.getElementById("abrirVentana").onclick = () => {
-    aux = window.open("../Pruebas/src/usuarios.html","_blank",width=ancho,height=alto)
+    aux = window.open("../Pruebas/src/usuarios.html","_blank","width="+ancho+",height="+alto);
 }
 
 // ----------------------------------------
-// EJERCICIO 11
+// EJERCICIO 11;
 // ----------------------------------------
 document.getElementById("redimensionar").onclick = () => {
     aux.resizeTo(600,500);
+    aux.focus();
 }
 
 // ----------------------------------------
