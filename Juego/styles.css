@@ -1,0 +1,48 @@
+* {
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+    font-family: 'Inter';
+    color: white;
+    text-align: center;
+}
+
+#error {
+    color: rgb(255, 43, 43);
+    padding: 3px;
+}
+
+body {
+    background-color: rgb(46, 46, 46);
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 10px;
+    margin-top: 7%;
+    font-size: 3em;
+    font-weight: 900;
+}
+
+input {
+    color: black;
+    padding: 5px;
+    border: 2px solid rgb(150, 150, 125);
+}
+
+div,section {
+    display: flex;
+    justify-content: center;
+}
+
+button {
+    padding: 5px 10px;
+    background-color: beige;
+    border: 2px solid black;
+    color: black
+}
+
+#instPalabra {
+    width: 18.5%;
+}
+
