@@ -54,3 +54,16 @@ footer {
     width: 100%;
     background-color: blueviolet;
 }
+
+.azul {
+    background-color: rgb(80, 80, 255);
+    color: white;
+}
+
+.rojo, .azul {
+    height: 100px;
+}
+
+.rojo {
+    background-color: rgb(255, 61, 61);
+}

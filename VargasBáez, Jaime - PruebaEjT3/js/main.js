@@ -24,10 +24,10 @@ for(let i=0;i<datosUsuarios.length-1;i++) {
 
 document.getElementById("bDatosusuarios").onclick = () => {
 
-    document.getElementById("indice0").innerHTML="1";
-    document.getElementById("indice1").innerHTML="2";
-    document.getElementById("indice2").innerHTML="3";
-    document.getElementById("indice3").innerHTML="4";
+    let textInidice = "indice";
+    for(let i=0;i<datosUsuarios.length;i++) {
+        document.getElementById(textInidice+i).innerHTML=i+1;
+    }
 
     let textNombre = "nombre";
     for(let i=0;i<datosUsuarios.length;i++){

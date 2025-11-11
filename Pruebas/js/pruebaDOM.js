@@ -73,3 +73,27 @@ document.getElementById("ver").onclick = () => {
         document.getElementById("ver").innerText = "Mostrar passwd"
     }
 }
+
+// para coger los primeros li de todos los ul 
+for (let elem of document.querySelectorAll("#lista li")) {
+    elem.style.color = "blue";
+}
+
+let primerLI = document.querySelector("li:first-child");
+let cssPrimerLI = window.getComputedStyle(primerLI);
+console.dir(cssPrimerLI)
+
+
+// cambiar de clasecuando se clicke
+for (let sec of document.getElementsByTagName("section"))
+    sec.onclick = changeColorComputed;
+// no se le ponen parentesis en este caso porqeu quieres modificar dentro del html y no asignarselo a la variable
+
+function changeColorComputed() {
+    if (this.className == "rojo")
+        this.className = "azul";
+    else 
+        this.className = "rojo";
+}
+
+
