@@ -85,8 +85,8 @@ console.dir(cssPrimerLI)
 
 
 // cambiar de clasecuando se clicke
-for (let sec of document.getElementsByTagName("section"))
-    sec.onclick = changeColorComputed;
+// for (let sec of document.getElementsByTagName("section"))
+//     sec.onclick = changeColorComputed;
 // no se le ponen parentesis en este caso porqeu quieres modificar dentro del html y no asignarselo a la variable
 
 function changeColorComputed() {
@@ -95,5 +95,24 @@ function changeColorComputed() {
     else 
         this.className = "rojo";
 }
+
+// array de los p dentro de section
+let section = document.querySelectorAll("section p");
+
+for(let p of section) {
+    p.style.opacity="0";
+    p.onmouseover = function() {
+        p.style.backgroundColor = "yellow";
+        p.style.color="black";
+        p.style.fontSize="1.5em";
+         p.style.opacity="100";
+    }; 
+    p.onmouseout = function() {
+        p.style.backgroundColor = "rgb(80, 80, 255)";
+        p.style.fontSize="1em";
+        p.style.opacity="0";
+    }
+}
+
 
 

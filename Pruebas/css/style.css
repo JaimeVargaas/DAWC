@@ -64,6 +64,11 @@ footer {
     height: 100px;
 }
 
+section p {
+    transition:all 1s ease-in-out;
+}
+
 .rojo {
     background-color: rgb(255, 61, 61);
 }
+
