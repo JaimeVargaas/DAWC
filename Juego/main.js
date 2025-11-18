@@ -1,3 +1,4 @@
+// variables globales para que se pueda acceder desde todas las funciones
 let boton = document.getElementById("ocultar");
 let juegoIniciado = false;
 let guiones = [];

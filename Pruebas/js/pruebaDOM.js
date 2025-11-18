@@ -114,5 +114,25 @@ for(let p of section) {
     }
 }
 
+// para añadir a mitad de la lista y no al final
+document.getElementById("inserta").onclick = function () {
+    const newNode = document.createElement("li");
+    const newNodeText = document.createTextNode(document.getElementById("animal").value);
+    const listaAnimales = document.getElementById("listaAnimales");
+    newNode.appendChild(newNodeText);
+    newNode.style.color = "red";
 
+    // document.getElementById("listaAnimales").appendChild(newNode);
+
+    let numAnimales = listaAnimales.querySelectorAll("li").length;
+    console.log(numAnimales);
+
+    // listaAnimales.insertBefore(newNode, listaAnimales.querySelectorAll("li")[3]);
+
+    // listaAnimales.querySelectorAll("li")[0].before(newNode);
+
+    let nodoEliminado = listaAnimales.replaceChild(newNode, listaAnimales.querySelectorAll("li")[3]);
+    listaAnimales.appendChild(nodoEliminado);
+
+}
 
