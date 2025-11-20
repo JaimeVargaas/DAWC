@@ -15,10 +15,12 @@ let contTexto;
 let intervalo;
 let arrayFallos = [];
 let letrasFalladas;
+let jugado = [];
+let mostrarJuegos;
 
 document.getElementById("instPalabra").onclick = () => {
     // si juego esta en false se juega y si esta en true da error
-    if (!juegoIniciado) validarPalabra();
+    if (!juegoIniciado)validarPalabra();
     else {
         document.getElementById("error").innerText = "El juego ya está iniciado";
     }
@@ -48,8 +50,11 @@ function jugar() {
     document.getElementById("error").innerText = "";
     let palabra = document.getElementById("palabra").value.toLowerCase();
     cont = contador();
-    empieza = document.body.appendChild(createNode("h2", "Empieza el juego"));
-    contTexto = document.body.appendChild(createNode("h4", "Contador: " + cont));
+    empieza =createNode("h2", "Empieza el juego");
+    document.body.appendChild(empieza);
+    contTexto = createNode("h4", "Contador: " + cont);
+    document.body.appendChild(contTexto);
+
     let conth4 = document.getElementsByTagName("h4");
 
     intervalo = setInterval(function () {
@@ -68,7 +73,8 @@ function jugar() {
 
     letra();
 
-    fallos = document.body.appendChild(createNode("h3", "Intentos fallidos: " + contFallos + " de 6"));
+    let intentos = ((document.getElementById("palabra").value.length)/2)+1;
+    fallos = document.body.appendChild(createNode("h3", "Intentos fallidos: " + contFallos + " de " + parseInt(intentos)));
     letrasFalladas = document.body.appendChild(createNode("p", "Letras falladas:"))
 }
 
@@ -81,6 +87,26 @@ function noTime() {
         botonLetra.disabled = true;
         cont = 0;
         contTexto.innerText = "Contador: " + cont;
+        let palabra = document.getElementById("palabra").value.toLowerCase();
+
+        let jugarNuevo = document.body.appendChild(createNode("button", "Jugar de nuevo"));
+        let contSegundos = contador();
+        jugado.push("Palabra: " + palabra + ", no acertado, "+ (contSegundos) + " segundos");
+        jugarNuevo.onclick = () => {
+            document.body.removeChild(empieza);
+            document.body.removeChild(inputLetra);
+            document.body.removeChild(fallos);
+            document.body.removeChild(letrasFalladas);
+            document.body.removeChild(contTexto);
+            document.body.removeChild(h3Guiones);
+            document.body.removeChild(jugarNuevo);
+            document.body.removeChild(botonLetra);
+            guiones = [];
+            palabra.value="";
+            document.getElementById("palabra").disabled=false;
+            juegoIniciado=false;
+            mostrarTodos();
+        }
     }
 }
 
@@ -111,6 +137,7 @@ function letra() {
 function comprLetra(input) {
     let palabra = document.getElementById("palabra").value.toLowerCase();
     let array = palabra.split("");
+    let intentos = ((document.getElementById("palabra").value.length)/2)+1;
 
     if (array.includes(input)) {
         cadenaGuiones = "";
@@ -128,7 +155,7 @@ function comprLetra(input) {
     }
     else {
         contFallos++;
-        fallos.innerText = "Intentos fallidos: " + contFallos + " de 6";
+        fallos.innerText = "Intentos fallidos: " + contFallos + " de " + parseInt(intentos);
         maxFallos();
         letrasFalladas.innerText = "Letras Falladas: " + fallaLetras();
     }
@@ -152,31 +179,69 @@ function ganado() {
         inputLetra.disabled = true;
         botonLetra.disabled = true;
         empieza.innerHTML = "¡Has ganado!<br> Has acertado la palabra completa";
-        cont = 0;
         clearInterval(intervalo);
         contTexto.innerText = "Contador: " + cont;
-        document.body.appendChild(createNode("button", "Jugar de nuevo")).onclick = () => {
-            location.reload();
+        let jugarNuevo = document.body.appendChild(createNode("button", "Jugar de nuevo"))
+        let palabra = document.getElementById("palabra").value.toLowerCase();
+        let contSegundos = contador();
+        jugado.push("Palabra: " + palabra + ", acertado, "+ (contSegundos-cont) + " segundos");
+
+        jugarNuevo.onclick = () => {
+            mostrarTodos();
+            document.body.removeChild(empieza);
+            document.body.removeChild(inputLetra);
+            document.body.removeChild(fallos);
+            document.body.removeChild(letrasFalladas);
+            document.body.removeChild(contTexto);
+            document.body.removeChild(h3Guiones);
+            document.body.removeChild(jugarNuevo);
+            document.body.removeChild(botonLetra);
+            guiones = [];
+            palabra.value="";
+            document.getElementById("palabra").disabled=false;
+            juegoIniciado=false;
         }
     }
 }
 
 // si se ha llegado al numero de fallos se acaba el juego
 function maxFallos() {
-    if (contFallos == 6) {
+    let intentos = ((document.getElementById("palabra").value.length)/2)+1;
+    if (contFallos == parseInt(intentos)) {
         inputLetra.disabled = true;
         botonLetra.disabled = true;
         empieza.innerHTML = "¡Has perdido!<br> Has llegado al máximo de fallos";
         cont = 0;
         clearInterval(intervalo);
         contTexto.innerText = "Contador: " + cont;
+
+        let jugarNuevo = document.body.appendChild(createNode("button", "Jugar de nuevo"))
+        let palabra = document.getElementById("palabra").value.toLowerCase();
+        let contSegundos = contador();
+        jugado.push("Palabra: " + palabra + ", no acertado, "+ (contSegundos-cont) + " segundos");
+
+        jugarNuevo.onclick = () => {
+            document.body.removeChild(empieza);
+            document.body.removeChild(inputLetra);
+            document.body.removeChild(fallos);
+            document.body.removeChild(letrasFalladas);
+            document.body.removeChild(contTexto);
+            document.body.removeChild(h3Guiones);
+            document.body.removeChild(jugarNuevo);
+            document.body.removeChild(botonLetra);
+            guiones = [];
+            palabra.value="";
+            document.getElementById("palabra").disabled=false;
+            juegoIniciado=false;
+            mostrarTodos();
+        }
     }
 }
 
 // Funcion que calcula cuanto tiempo se tiene para adivinar
 function contador() {
     let palabra = document.getElementById("palabra").value;
-    cont = palabra.length * 5;
+    cont = palabra.length * 10;
 
     return cont;
 }
@@ -191,6 +256,18 @@ function ocultarPalabra() {
     else {
         palabra.type = "password"
         boton.innerText = "Mostrar"
+    }
+}
+
+function mostrarTodos() {
+    if (!mostrarJuegos) {
+        mostrarJuegos = document.body.appendChild(createNode("p"));
+    }
+    mostrarJuegos.innerText = "";
+
+    for(let i=0;i<jugado.length;i++) {
+        let f = i+1;
+        mostrarJuegos.innerText+="Juego " + f +":" + " " + jugado[i] + "\n";
     }
 }
 
